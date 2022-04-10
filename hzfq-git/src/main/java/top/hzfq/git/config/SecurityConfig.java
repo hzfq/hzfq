@@ -3,8 +3,6 @@ package top.hzfq.git.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -54,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .formLogin().disable()
-                .logout().disable()
+//                .logout().disable()
                 .requestCache().disable()
                 .authorizeRequests()
                 .mvcMatchers("/oauth2/**").permitAll()
@@ -97,9 +95,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 String localizedMessage = exception.getLocalizedMessage();
                 logger.info("auth failure. exception: " + localizedMessage);
                 //授权失败处理逻辑
-                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                response.setStatus(HttpStatus.OK.value());
-                response.getWriter().println(objectMapper.writeValueAsString(localizedMessage));
+//                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+//                response.setStatus(HttpStatus.OK.value());
+//                response.getWriter().println(objectMapper.writeValueAsString(localizedMessage));
             });
         };
     }
