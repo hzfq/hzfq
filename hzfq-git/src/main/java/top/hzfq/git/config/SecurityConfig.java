@@ -3,6 +3,8 @@ package top.hzfq.git.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,6 +17,8 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.oauth2.client.web.AuthenticatedPrincipalOAuth2AuthorizedClientRepository;
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
 
 import javax.annotation.Resource;
 
@@ -59,8 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
-//                .oauth2Login(oAuth2LoginConfigurer());
-                .oauth2Login(Customizer.withDefaults());
+                .oauth2Login(oAuth2LoginConfigurer());
+//                .oauth2Login(Customizer.withDefaults());
     }
 
     /**
@@ -82,10 +86,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             configurer.successHandler((request, response, authentication) -> {
                 logger.info("auth success. auth: " + objectMapper.writeValueAsString(authentication));
                 //授权成功处理逻辑
+//                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+//                response.setStatus(HttpStatus.OK.value());
+//                response.getWriter().println(objectMapper.writeValueAsString(authentication));
+
+                RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+                redirectStrategy.sendRedirect(request, response, "/");
             });
             configurer.failureHandler((request, response, exception) -> {
-                logger.info("auth failure. exception: " + exception.getLocalizedMessage());
+                String localizedMessage = exception.getLocalizedMessage();
+                logger.info("auth failure. exception: " + localizedMessage);
                 //授权失败处理逻辑
+                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+                response.setStatus(HttpStatus.OK.value());
+                response.getWriter().println(objectMapper.writeValueAsString(localizedMessage));
             });
         };
     }
