@@ -1,0 +1,51 @@
+{
+    "clientRegistration": {
+        "registrationId": "gitlab",
+        "clientId": "ecf4968c343aec1432a3cf718202f04cfd4fdbcf63dedb41d01934f22aa53bb9",
+        "clientSecret": "c6c1ea6d52d53332d92f9c16cf91cc0a7298c0a9c1ed1f56bbedc5d0db74b13d",
+        "clientAuthenticationMethod": {
+            "value": "post"
+        },
+        "authorizationGrantType": {
+            "value": "authorization_code"
+        },
+        "redirectUri": "http://192.168.0.104:6006/login/oauth2/code/gitlab",
+        "scopes": [
+            "api+read_user"
+        ],
+        "providerDetails": {
+            "authorizationUri": "http://192.168.0.126/oauth/authorize",
+            "tokenUri": "http://192.168.0.126/oauth/token",
+            "userInfoEndpoint": {
+                "uri": "http://192.168.0.126/api/v4/user",
+                "authenticationMethod": {
+                    "value": "header"
+                },
+                "userNameAttributeName": "username"
+            },
+            "jwkSetUri": "http://192.168.0.126/oauth/discovery/keys",
+            "issuerUri": null,
+            "configurationMetadata": {}
+        },
+        "clientName": "hzfq-git",
+        "redirectUriTemplate": "http://192.168.0.104:6006/login/oauth2/code/gitlab"
+    },
+    "principalName": "hzfq",
+    "accessToken": {
+        "tokenValue": "4217c71ec9f4600dd27af4a188359cdf65170784f9b26558c8e8696d4d709fea",
+        "issuedAt": "2022-04-10T01:47:02.958Z",
+        "expiresAt": "2022-04-10T03:33:04.958Z",
+        "tokenType": {
+            "value": "Bearer"
+        },
+        "scopes": [
+            "read_user",
+            "api"
+        ]
+    },
+    "refreshToken": {
+        "tokenValue": "ff2fc0113b4f3541950c62f383daaf5a74ad368f759ad436d77c9d2fae6e160b",
+        "issuedAt": "2022-04-10T01:47:02.958Z",
+        "expiresAt": null
+    }
+}

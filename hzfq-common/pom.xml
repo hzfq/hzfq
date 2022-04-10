@@ -9,9 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>top.hzfq</groupId>
     <artifactId>hzfq-common</artifactId>
-    <version>1.0.0</version>
+    <packaging>jar</packaging>
 
     <properties>
         <java.version>1.8</java.version>
