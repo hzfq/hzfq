@@ -8,12 +8,14 @@ package top.hzfq.common.model.entity;
  */
 public class BaseDictItem extends BaseInfo {
 
-    private Long dictItemId;
-    private Long dictId;
+    private Integer dictItemId;
+    private Integer parentDictItemId;
+    private Integer dictId;
     private String itemName;
     private String itemValue;
     private String itemDesc;
-    private Integer itemOrder; //序号
+    private Integer itemOrder; //排序
     private Boolean itemStatus; //状态
+    private Boolean defaultItem; //默认项
 
 }

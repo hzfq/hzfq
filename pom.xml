@@ -17,6 +17,8 @@
         <module>hzfq-gateway</module>
         <module>hzfq-registrar</module>
         <module>hzfq-git</module>
+        <module>hzfq-sso</module>
+        <module>hzfq-camunda</module>
     </modules>
 
 </project>
